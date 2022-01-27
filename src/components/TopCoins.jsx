@@ -31,10 +31,10 @@ export default function TopCoins() {
 
     return (
         <div className='mt-20 text-left max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
-            <h1 className='text-gray-800 font-bold text-4xl'>Top Coins</h1>
+            <h1 className='text-gray-800 font-bold md:text-4xl text-2xl'>Top Coins</h1>
             <hr className='w-16 my-6' />
             {loading ? (<>
-                <div className='grid grid-cols-4 gap-x-6 items-center justify-around'>
+                <div className='grid md:grid-cols-4 grid-cols-2 md:gap-x-6 gap-6 items-center justify-around'>
                     <div className='w-full h-full rounded-md animate-pulse border p-4 space-y-6'>
                         <div className='w-full h-4 rounded-full animate-pulse bg-gray-200'></div>
                         <div className='w-full h-4 rounded-full animate-pulse bg-gray-200'></div>
@@ -56,16 +56,16 @@ export default function TopCoins() {
                         <div className='w-full h-4 rounded-full animate-pulse bg-gray-200'></div>
                     </div>
                 </div>
-            </>) : (<div className='grid grid-cols-4 gap-x-6 items-center justify-around'>
+            </>) : (<div className='grid md:grid-cols-4 grid-cols-2 md:gap-x-6 gap-4 items-center justify-around'>
                 {topCoin.map((coin) => {
                     return (
-                        <a href="/" class="block p-6 max-w-sm bg-white rounded-lg border border-gray-200 shadow-md hover:bg-gray-100">
-                            <img src={coin.image} alt="coin" class="h-12 w-12 rounded-full mb-4" />
+                        <a href="/" class="block py-6 px-4 max-w-sm bg-white rounded-lg border border-gray-200 shadow-md hover:bg-gray-100">
+                            <img src={coin.image} alt="coin" class="md:h-12 md:w-12 w-6 h-6 rounded-full mb-4" />
                             <div className='flex items-center justify-between'>
-                                <h5 class="text-xl font-bold tracking-tight text-gray-800">{coin.symbol.toUpperCase()}/IDR</h5>
-                                <p className={`${coin.price_change_percentage_24h < 0 ? 'text-red-500' : 'text-green-500'}`}>{`${coin.price_change_percentage_24h}%`}</p>
+                                <h5 class="md:text-xl text-sm font-bold tracking-tight text-gray-800">{coin.symbol.toUpperCase()}/IDR</h5>
+                                <p className={`md:text-base text-xs ${coin.price_change_percentage_24h < 0 ? 'text-red-500' : 'text-green-500'}`}>{`${coin.price_change_percentage_24h}%`}</p>
                             </div>
-                            <p class="font-normal text-gray-700 mt-2">Rp{new Intl.NumberFormat(['ban', 'id']).format(coin.current_price)}</p>
+                            <p class="font-normal md:text-base text-sm text-gray-500 mt-2">Rp{new Intl.NumberFormat(['ban', 'id']).format(coin.current_price)}</p>
                         </a>
                     )
                 })}
