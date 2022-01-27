@@ -2,7 +2,7 @@ import "./App.css";
 import Navbar from "./components/Navbar";
 import Home from "./pages/Home";
 import { Routes, Route } from "react-router-dom";
-import AllCoins from "./components/AllCoins";
+import AllCoins from "./pages/AllCoins";
 
 function App() {
   return (
