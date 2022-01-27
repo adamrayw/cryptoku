@@ -1,12 +1,17 @@
 import "./App.css";
 import Navbar from "./components/Navbar";
 import Home from "./pages/Home";
+import { Routes, Route } from "react-router-dom";
+import AllCoins from "./components/AllCoins";
 
 function App() {
   return (
     <div className="App">
       <Navbar />
-      <Home />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/coins" element={<AllCoins />} />
+      </Routes>
     </div>
   );
 }
