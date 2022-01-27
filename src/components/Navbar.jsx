@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Transition } from "@headlessui/react";
 import SearchCoin from "./SearchCoin";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 export default function Navbar() {
     const [isOpen, setIsOpen] = useState(false);
@@ -12,23 +12,37 @@ export default function Navbar() {
                 <div className="flex items-center justify-between h-16">
                     <div className="flex items-center">
                         <div className="flex-shrink-0">
-                            <h2 className="text-white font-bold text-2xl">Cryptoku</h2>
+                            <NavLink to="/" className="text-white font-bold text-2xl" >Cryptoku</NavLink>
                         </div>
                         <div className="hidden md:block">
                             <div className="ml-10 flex items-baseline space-x-4">
-                                <Link
+                                <NavLink
                                     to="/coins"
                                     className=" hover:bg-gray-700 hover:text-white text-gray-300 px-3 py-2 rounded-md text-sm font-medium"
+                                    style={({ isActive }) =>
+                                        isActive
+                                            ? {
+                                                borderBottom: '1px solid white',
+                                            }
+                                            : { borderBottom: '0px solid white', }
+                                    }
                                 >
                                     Coins
-                                </Link>
+                                </NavLink>
 
-                                <a
-                                    href="/"
+                                <NavLink
+                                    to="/"
                                     className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+                                    style={({ isActive }) =>
+                                        isActive
+                                            ? {
+                                                borderBottom: '1px solid white',
+                                            }
+                                            : { borderBottom: '0px solid white', }
+                                    }
                                 >
                                     Exchanges
-                                </a>
+                                </NavLink>
                                 <div className="md:hidden">
                                     <SearchCoin />
                                 </div>
