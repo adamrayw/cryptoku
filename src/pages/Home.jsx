@@ -1,21 +1,8 @@
-import { useEffect } from "react"
 import Trending from "../components/Trending"
 import Footer from "../components/Footer"
 
 export default function List() {
-    // const [trendingCoins, setTrendingCoins] = useState([])
 
-    useEffect(() => {
-        // axios.get('https://api.coingecko.com/api/v3/coins/markets', {
-        //     params: {
-        //         vs_currency: 'idr',
-        //         per_page: 200,
-        //         order: 'market_cap_desc'
-        //     }
-        // }).then((response) => {
-        //     setTrendingCoins(response.data);
-        // })
-    })
 
     return (
         <>
