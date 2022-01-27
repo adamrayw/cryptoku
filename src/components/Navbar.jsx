@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Transition } from "@headlessui/react";
 import SearchCoin from "./SearchCoin";
+import { Link } from "react-router-dom";
 
 export default function Navbar() {
     const [isOpen, setIsOpen] = useState(false);
@@ -15,12 +16,12 @@ export default function Navbar() {
                         </div>
                         <div className="hidden md:block">
                             <div className="ml-10 flex items-baseline space-x-4">
-                                <a
-                                    href="/"
+                                <Link
+                                    to="/coins"
                                     className=" hover:bg-gray-700 hover:text-white text-gray-300 px-3 py-2 rounded-md text-sm font-medium"
                                 >
                                     Coins
-                                </a>
+                                </Link>
 
                                 <a
                                     href="/"
