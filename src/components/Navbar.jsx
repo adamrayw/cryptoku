@@ -113,19 +113,33 @@ export default function Navbar() {
                 {(ref) => (
                     <div className="md:hidden" id="mobile-menu">
                         <div ref={ref} className="px-2 pt-2 pb-3 space-y-4 sm:px-3">
-                            <a
-                                href="/"
+                            <NavLink
+                                to="/coins"
                                 className="hover:bg-gray-700 text-white block px-3 py-2 rounded-md text-base font-medium"
+                                style={({ isActive }) =>
+                                    isActive
+                                        ? {
+                                            borderBottom: '1px solid white',
+                                        }
+                                        : { borderBottom: '0px solid white', }
+                                }
                             >
                                 Coins
-                            </a>
+                            </NavLink>
 
-                            <a
-                                href="/"
+                            <NavLink
+                                to="/"
                                 className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
+                                style={({ isActive }) =>
+                                    isActive
+                                        ? {
+                                            borderBottom: '1px solid white',
+                                        }
+                                        : { borderBottom: '0px solid white', }
+                                }
                             >
                                 Exchanges
-                            </a>
+                            </NavLink>
                             <SearchCoin />
                         </div>
                     </div>
