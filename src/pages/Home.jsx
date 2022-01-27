@@ -1,12 +1,11 @@
-import Trending from "../components/Trending"
 import Footer from "../components/Footer"
+
 
 export default function List() {
 
 
     return (
         <>
-            <Trending />
             <div className="text-left max-w-7xl my-20 mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
                 <div>
                     <h1 className="text-gray-800 font-bold text-4xl">What is cryptocurrency market cap?</h1>
