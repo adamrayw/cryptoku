@@ -65,7 +65,7 @@ export default function TopCoins() {
             </>) : (<div className='grid md:grid-cols-4 grid-cols-2 md:gap-x-6 gap-4 items-center justify-around'>
                 {topCoin.map((coin) => {
                     return (
-                        <a href="/" class="block py-6 px-4 max-w-sm bg-white rounded-lg border border-gray-200 shadow-md hover:bg-gray-100">
+                        <a href="/" key={coin.id} class="block py-6 px-4 max-w-sm bg-white rounded-lg border border-gray-200 shadow-md hover:bg-gray-100">
                             <img src={coin.image} alt="coin" class="md:h-12 md:w-12 w-6 h-6 rounded-full mb-4" />
                             <div className='flex items-center justify-between'>
                                 <h5 class="md:text-xl text-sm font-bold tracking-tight text-gray-800">{coin.symbol.toUpperCase()}/IDR</h5>
