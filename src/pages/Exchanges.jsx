@@ -64,7 +64,7 @@ export default function Trending() {
                                                     <p className="pr-8 py-3 text-gray-800">{e.year_established}</p>
                                                 </td>
                                                 <td>
-                                                    <p className="pr-8 py-3 text-gray-800">{e.trade_volume_24h_btc}</p>
+                                                    <p className="pr-8 py-3 text-gray-800">{e.trade_volume_24h_btc.toString().slice(0, -9)}</p>
                                                 </td>
 
                                                 <td>
