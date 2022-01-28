@@ -2,6 +2,8 @@ import React from 'react';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faArrowDownLong, faArrowUpLong } from '@fortawesome/free-solid-svg-icons';
 
 export default function TopCoins() {
     const [topCoin, setTopCoin] = useState([])
@@ -67,7 +69,11 @@ export default function TopCoins() {
                             <img src={coin.image} alt="coin" class="md:h-12 md:w-12 w-6 h-6 rounded-full mb-4" />
                             <div className='flex items-center justify-between'>
                                 <h5 class="md:text-xl text-sm font-bold tracking-tight text-gray-800">{coin.symbol.toUpperCase()}/IDR</h5>
-                                <p className={`md:text-base text-xs ${coin.price_change_percentage_24h < 0 ? 'text-red-500' : 'text-green-500'}`}>{`${coin.price_change_percentage_24h}%`}</p>
+                                <div className='flex items-center'>
+                                    <p className={`md:text-base text-xs ${coin.price_change_percentage_24h < 0 ? 'text-red-500' : 'text-green-500'}`}>{`${coin.price_change_percentage_24h.toString().slice(0, -3)}%`}</p>
+                                    {coin.price_change_percentage_24h < 0 ? (<FontAwesomeIcon icon={faArrowDownLong} className='ml-1 text-xs text-red-500' />) : (<FontAwesomeIcon icon={faArrowUpLong} className='ml-1 text-xs text-green-500' />)}
+
+                                </div>
                             </div>
                             <p class="font-normal md:text-base text-sm text-gray-500 mt-2">Rp{new Intl.NumberFormat(['ban', 'id']).format(coin.current_price)}</p>
                         </a>
