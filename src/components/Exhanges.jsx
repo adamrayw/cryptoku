@@ -1,6 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 
 export default function Exhanges() {
     const [exchanges, setExchanges] = useState([])
@@ -26,7 +27,10 @@ export default function Exhanges() {
     }, [])
     return (
         <div className='mt-20 text-left max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
-            <h1 className='text-gray-800 font-bold md:text-4xl text-2xl'>Exchanges</h1>
+            <div className='flex justify-between items-center'>
+                <h1 className='text-gray-800 font-bold md:text-4xl text-2xl'>Exchanges</h1>
+                <Link to="/exchanges">More</Link>
+            </div>
             <hr className='w-16 my-6' />
             {loading ? (<>
                 <div className='grid md:grid-cols-4 grid-cols-2 md:gap-x-6 gap-6 items-center justify-around'>
