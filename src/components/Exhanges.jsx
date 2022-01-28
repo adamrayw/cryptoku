@@ -96,7 +96,7 @@ export default function Exhanges() {
                     {exchanges.map((ex) => {
                         return (
                             <SwiperSlide>
-                                <a href={ex.url} class="block my-2 mx-2 py-6 px-4 h-fit -max-w-sm bg-white rounded-lg border border-gray-200 shadow-md hover:bg-gray-100">
+                                <a href={ex.url} class="block my-2 mx-2 py-6 px-4 h-fit -max-w-sm bg-white rounded-lg border border-gray-200 shadow-md hover:bg-gray-100" key={ex.id}>
                                     <div className='flex items-center'>
                                         <img src={ex.image} alt="ex" class="md:h-12 md:w-12 w-6 h-6 rounded-full" />
                                         <h5 class="md:text-xl text-center ml-4 text-sm font-bold tracking-tight text-gray-800 truncate overflow-hidden">{ex.name}</h5>
