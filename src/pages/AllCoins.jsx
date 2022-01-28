@@ -2,6 +2,8 @@ import { useEffect, useState } from "react"
 import axios from "axios"
 import { Sparklines, SparklinesLine, SparklinesSpots } from 'react-sparklines';
 import spinner from '../assets/img/spinner.svg'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faArrowDownLong, faArrowUpLong } from '@fortawesome/free-solid-svg-icons';
 
 export default function Trending() {
     const [listCoin, setListCoin] = useState([])
@@ -77,14 +79,17 @@ export default function Trending() {
                                                     <p className="pr-8 py-3 text-gray-800">Rp{new Intl.NumberFormat(['ban', 'id']).format(e.current_price)}</p>
                                                 </td>
                                                 <td>
-                                                    <p className={`pr-8 py-3 ${e.price_change_percentage_24h < 0 ? 'text-red-500' : 'text-green-500'}`}>{`${e.price_change_percentage_24h}%`}</p>
+                                                    <div className="flex items-center pr-8">
+                                                        {e.price_change_percentage_24h < 0 ? (<FontAwesomeIcon icon={faArrowDownLong} className='mr-1 text-xs text-red-500' />) : (<FontAwesomeIcon icon={faArrowUpLong} className='mr-1 text-xs text-green-500' />)}
+                                                        <p className={` py-3 ${e.price_change_percentage_24h < 0 ? 'text-red-500' : 'text-green-500'}`}>{`${e.price_change_percentage_24h.toString().slice(0, -3)}%`}</p>
+                                                    </div>
                                                 </td>
 
                                                 <td>
                                                     <p className="pr-8 py-3 text-gray-800">Rp{new Intl.NumberFormat(['ban', 'id']).format(e.market_cap)}</p>
                                                 </td>
                                                 <td>
-                                                    <Sparklines data={e.sparkline_in_7d.price} height={60} margin={10}>
+                                                    <Sparklines data={e.sparkline_in_7d.price} width={100} margin={6}>
                                                         <SparklinesLine style={{ fill: "none" }} />
                                                         <SparklinesSpots />
                                                     </Sparklines>
