@@ -25,7 +25,7 @@ export default function Tickers() {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
     return (
-        <div className="py-3 bg-gray-800">
+        <div className="py-3 bg-gray-800 border-b border-gray-700">
             {loading ? (<>
                 <div className='flex items-center justify-around'>
                     <div className='w-full h-1 rounded-md animate-pulse px-4 py-2'>
