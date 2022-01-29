@@ -7,19 +7,23 @@ export default function SearchCoin() {
     const [keyword, setKeyword] = useState("");
     const [open, setOpen] = useState(false)
     const [loading, setLoading] = useState(false)
+    const [notFound, setNotFound] = useState(false)
 
-    const filteredCoins = result.filter((coin) => {
-        return coin.name.toLowerCase().includes(keyword.toLowerCase()) || coin.symbol.toLowerCase().includes(keyword.toLowerCase())
-    })
 
-    useEffect(() => {
-        const fetchCoin = async () => {
+    const fetchCoin = async () => {
+        if (keyword.length < 1) {
+            setNotFound(true);
+            return;
+        } else {
             setLoading(true)
             const response = await axios.get('https://api.coingecko.com/api/v3/search?query=' + keyword);
             setResult(response.data.coins)
             setLoading(false)
         }
-        fetchCoin()
+    }
+
+    useEffect(() => {
+        // fetchCoin()
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
@@ -28,6 +32,9 @@ export default function SearchCoin() {
             <input type="text" className="w-full text-sm focus:ring-2 transition-all focus:ring-gray-300 px-4 py-2 rounded-lg bg-white border" placeholder="Search Coin..."
                 onChange={(e) => {
                     setKeyword(e.target.value)
+                    setTimeout(() => {
+                        fetchCoin()
+                    }, 1000);
                     setOpen(true)
                     if (e.target.value.length < 1) {
                         setOpen(false)
@@ -38,7 +45,7 @@ export default function SearchCoin() {
                     {loading && (<>
                         <img src={spinner} className="animate-spin" alt="spin" width={20} />
                     </>)}
-                    {filteredCoins.map((e) => {
+                    {result.map((e) => {
                         return (
                             <div key={e.id} className="flex items-center space-x-2">
                                 <img src={e.thumb} alt={e.name} width={20} />
@@ -46,6 +53,7 @@ export default function SearchCoin() {
                             </div>
                         )
                     })}
+                    {notFound && (<p className="flex justify-center items-center mt-12 text-gray-800">Coin not found</p>)}
                 </div>
             )}
         </div>
