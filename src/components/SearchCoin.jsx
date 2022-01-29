@@ -4,21 +4,18 @@ import spinner from '../assets/img/spinner.svg'
 
 export default function SearchCoin() {
     const [result, setResult] = useState([]);
-    const [keyword, setKeyword] = useState("");
+    const [keyword, setKeyword] = useState("bitcoin");
     const [open, setOpen] = useState(false)
     const [loading, setLoading] = useState(false)
-    const [notFound, setNotFound] = useState(false)
 
 
     const fetchCoin = async () => {
-        if (keyword.length < 1) {
-            setNotFound(true);
-        } else {
+        if (keyword.length > 0) {
+
             setLoading(true)
             const response = await axios.get('https://api.coingecko.com/api/v3/search?query=' + keyword);
             setResult(response.data.coins)
             setLoading(false)
-            setNotFound(false)
         }
     }
 
@@ -34,7 +31,7 @@ export default function SearchCoin() {
                     setKeyword(e.target.value)
                     setTimeout(() => {
                         fetchCoin()
-                    }, 1000);
+                    }, 500)
                     setOpen(true)
                     if (e.target.value.length < 1) {
                         setOpen(false)
@@ -53,7 +50,7 @@ export default function SearchCoin() {
                             </div>
                         )
                     })}
-                    {(notFound || result.length === 0) && (<p className="flex justify-center items-center mt-12 text-gray-800">Coin not found</p>)}
+                    {result.length < 2 && (<p className="flex justify-center items-center mt-12 text-gray-800 text-center">Use keywords more specific</p>)}
                 </div>
             )}
         </div>
