@@ -37,7 +37,15 @@ export default function SearchCoin() {
             </div>
             {open && (
                 <div className="fixed bg-black bg-opacity-10 flex flex-row justify-center items-center z-10 top-1/2 left-1/2 text-left transform -translate-x-1/2 -translate-y-1/2 w-full h-full">
-                    <div className="h-96 mx-2 overflow-y-auto bg-white md:w-4/12 w-full mt-2 md:p-10 p-6 shadow rounded-lg z-50 space-y-4">
+                    <div className="relative h-96 mx-2 overflow-y-auto bg-white md:w-4/12 w-full mt-2 md:p-10 p-6 shadow rounded-lg z-50 space-y-2">
+                        <button className="absolute top-0 right-0 px-2 hover:cursor-pointer" onClick={() => {
+                            setKeyword("")
+                            setOpen(false)
+                            setLoading(false)
+                            setClose(false)
+                        }}>
+                            <FontAwesomeIcon icon={faClose} />
+                        </button>
                         <div className="relative">
                             <input type="text" className=" w-full text-sm focus:ring-2 transition-all focus:ring-gray-300 px-4 py-2 rounded-lg bg-white border" value={keyword} autoFocus placeholder="Search Coin..."
                                 onChange={(e) => {
@@ -47,12 +55,13 @@ export default function SearchCoin() {
                                         fetchCoin()
                                     }, 500)
                                     setOpen(true)
+                                    if (e.target.value.length < 1) {
+                                        setClose(false)
+                                    }
 
                                 }} />
                             {close && (<button className="absolute right-2.5 top-2 hover:cursor-pointer" onClick={() => {
                                 setKeyword("")
-                                setOpen(false)
-                                setLoading(false)
                                 setClose(false)
                             }}>
                                 <FontAwesomeIcon icon={faClose} />
@@ -63,20 +72,22 @@ export default function SearchCoin() {
                                 <img src={spinner} className="animate-spin" alt="spin" width={20} />
                             </>)}
                         </div>
-                        {result.map((e) => {
-                            return (
-                                <div key={e.id} className=" flex items-center justify-between space-x-2 text-gray-800">
-                                    <div className="flex items-center space-x-2">
-                                        <img src={e.thumb} alt={e.name} width={20} />
-                                        <p className="text-sm font-semibold mb-2 mr-1">{e.name} <span>({e.symbol})</span></p>
+                        <div className="space-y-4">
+                            {result.map((e) => {
+                                return (
+                                    <div key={e.id} className=" flex items-center justify-between space-x-2 text-gray-800">
+                                        <div className="flex items-center space-x-2">
+                                            <img src={e.thumb} alt={e.name} width={20} />
+                                            <p className="text-sm font-semibold mb-2 mr-1">{e.name} <span>({e.symbol})</span></p>
+                                        </div>
+                                        <small className="ml-auto">#{e.market_cap_rank}</small>
                                     </div>
-                                    <small className="ml-auto">#{e.market_cap_rank}</small>
-                                </div>
-                            )
-                        })}
+                                )
+                            })}
+                        </div>
                         {result.length < 1 && (
-                            <div className="h-20 my-auto text-center px-10">
-                                <FontAwesomeIcon icon={faKey} className="text-gray-800" />
+                            <div className="h-40 flex flex-col justify-center items-center text-center px-5">
+                                <FontAwesomeIcon icon={faKey} size="xl" className="text-gray-800 mb-2" />
                                 <p className="flex justify-center items-center text-gray-800 text-center">Use more specific keywords</p>
                             </div>)}
                     </div>
