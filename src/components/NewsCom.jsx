@@ -15,7 +15,6 @@ export default function NewsCom() {
                 'x-rapidapi-key': '29cce2b0aemsh4493887fa8edc07p187fcdjsn3a361462fe34'
             }
         })
-        console.log(data.data.value);
         setNews(data.data.value);
     }
 
