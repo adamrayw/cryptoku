@@ -12,8 +12,6 @@ export default function SearchCoin() {
         return coin.name.toLowerCase().includes(keyword.toLowerCase()) || coin.symbol.toLowerCase().includes(keyword.toLowerCase())
     })
 
-    console.log(result);
-
     useEffect(() => {
         const fetchCoin = async () => {
             setLoading(true)
