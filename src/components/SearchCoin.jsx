@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import axios from "axios";
 import { useState, useEffect } from "react"
 import spinner from '../assets/img/spinner.svg'
+import { Transition } from "@headlessui/react";
 
 export default function SearchCoin() {
     const [result, setResult] = useState([]);
@@ -35,7 +36,15 @@ export default function SearchCoin() {
                         setOpen(true)
                     }} />
             </div>
-            {open && (
+            <Transition
+                show={open}
+                enter="transition-opacity duration-75"
+                enterFrom="opacity-0"
+                enterTo="opacity-100"
+                leave="transition-opacity duration-150"
+                leaveFrom="opacity-100"
+                leaveTo="opacity-0"
+            >
                 <div className="fixed bg-black bg-opacity-10 flex flex-row justify-center items-center z-10 top-1/2 left-1/2 text-left transform -translate-x-1/2 -translate-y-1/2 w-full h-full">
                     <div className="relative h-96 mx-2 overflow-y-auto bg-white md:w-4/12 w-full mt-2 md:p-10 p-6 shadow rounded-lg z-50 space-y-2">
                         <button className="absolute top-0 right-0 px-2 hover:cursor-pointer" onClick={() => {
@@ -47,7 +56,7 @@ export default function SearchCoin() {
                             <FontAwesomeIcon icon={faClose} />
                         </button>
                         <div className="relative">
-                            <input type="text" className=" w-full text-sm focus:ring-2 transition-all focus:ring-gray-300 px-4 py-2 rounded-lg bg-white border" value={keyword} autoFocus placeholder="Search Coin..."
+                            <input type="text" className=" w-full text-sm focus:ring-2 transition-all focus:ring-gray-600 px-4 py-2 rounded-lg bg-white border" value={keyword} autoFocus placeholder="Search Coin..."
                                 onChange={(e) => {
                                     setClose(true)
                                     setKeyword(e.target.value)
@@ -92,7 +101,8 @@ export default function SearchCoin() {
                             </div>)}
                     </div>
                 </div>
-            )}
-        </div>
+
+            </Transition>
+        </div >
     )
 }
