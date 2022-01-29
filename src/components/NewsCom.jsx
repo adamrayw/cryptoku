@@ -31,11 +31,11 @@ export default function NewsCom() {
             </div>
             <hr className='w-16 my-6' />
             <div className='grid md:grid-cols-4 grid-cols-2 md:gap-x-4 gap-6 items-center justify-around'>
-                {news.map((n) => {
+                {news.map((n, index) => {
                     return (
-                        <a href={n.url} rel='noreferrer' target="_blank" className="flex flex-col items-center rounded-lg shadow-md md:flex-row md:max-w-xl bg-gray-800 hover:bg-gray-900 transition-all">
+                        <a href={n.url} key={index} rel='noreferrer' target="_blank" className="flex flex-col items-center rounded-lg shadow-md md:flex-row md:max-w-xl bg-gray-800 hover:bg-gray-900 transition-all">
                             <img className="object-cover w-full rounded-t-lg md:h-auto md:w-48 md:rounded-none md:rounded-l-lg" src={n.image.thumbnail.contentUrl} alt="" />
-                            <div className="flex flex-col justify-between px-4 py-2 leading-normal">
+                            <div className="flex flex-col justify-between px-4 md:py-2 py-4 leading-normal">
                                 <h5 className="mb-2 text-sm font-bold tracking-wider text-white md:line-clamp-3 line-clamp-4">{n.name}</h5>
                                 <small className='text-gray-200 text-xs line-clamp-1'>{n.provider[0].name}</small>
                             </div>
