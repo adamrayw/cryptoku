@@ -38,7 +38,7 @@ export default function Exhanges() {
     return (
         <div className='mt-20 text-left max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
             <div className='flex justify-between items-center'>
-                <h1 className='text-gray-800 font-bold md:text-4xl text-2xl'>Exchanges</h1>
+                <h1 className='text-gray-800 font-bold md:text-4xl text-2xl'>Top Exchanges</h1>
                 <Link to="/exchanges">More</Link>
             </div>
             <hr className='w-16 my-6' />
@@ -65,14 +65,14 @@ export default function Exhanges() {
                         <div className='w-full h-4 rounded-full animate-pulse bg-gray-200'></div>
                     </div>
                 </div>
-            </>) : (<div className=''>
+            </>) : (<div>
                 <Swiper
 
                     autoplay={{
                         "delay": 1600,
                         "disableOnInteraction": false
                     }}
-                    spaceBetween={50}
+                    spaceBetween={16}
                     breakpoints={{
                         "240": {
                             "slidesPerView": 2,
@@ -95,8 +95,8 @@ export default function Exhanges() {
                 >
                     {exchanges.map((ex) => {
                         return (
-                            <SwiperSlide>
-                                <a href={ex.url} class="block my-2 mx-2 py-6 px-4 h-fit -max-w-sm bg-white rounded-lg border border-gray-200 shadow-md hover:bg-gray-100" key={ex.id}>
+                            <SwiperSlide key={ex.id}>
+                                <a href={ex.url} class="block my-2 py-6 px-4 h-fit -max-w-sm bg-white rounded-lg border border-gray-200 shadow-md hover:bg-gray-100">
                                     <div className='flex items-center'>
                                         <img src={ex.image} alt="ex" class="md:h-12 md:w-12 w-6 h-6 rounded-full" />
                                         <h5 class="md:text-xl text-center ml-4 text-sm font-bold tracking-tight text-gray-800 truncate overflow-hidden">{ex.name}</h5>
