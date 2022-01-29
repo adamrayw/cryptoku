@@ -65,17 +65,17 @@ export default function TopCoins() {
             </>) : (<div className='grid md:grid-cols-4 grid-cols-2 md:gap-x-6 gap-4 items-center justify-around'>
                 {topCoin.map((coin) => {
                     return (
-                        <a href="/" key={coin.id} class="block py-6 px-4 max-w-sm bg-white rounded-lg border border-gray-200 shadow-md hover:bg-gray-100">
-                            <img src={coin.image} alt="coin" class="md:h-12 md:w-12 w-6 h-6 rounded-full mb-4" />
+                        <a href="/" key={coin.id} className="block py-6 px-4 max-w-sm bg-white rounded-lg border border-gray-200 shadow-md hover:bg-gray-100">
+                            <img src={coin.image} alt="coin" className="md:h-12 md:w-12 w-6 h-6 rounded-full mb-4" />
                             <div className='flex items-center justify-between'>
-                                <h5 class="md:text-xl text-sm font-bold tracking-tight text-gray-800">{coin.symbol.toUpperCase()}/IDR</h5>
+                                <h5 className="md:text-xl text-sm font-bold tracking-tight text-gray-800">{coin.symbol.toUpperCase()}/IDR</h5>
                                 <div className='flex items-center'>
                                     <p className={`md:text-base text-xs ${coin.price_change_percentage_24h < 0 ? 'text-red-500' : 'text-green-500'}`}>{`${coin.price_change_percentage_24h.toString().slice(0, -3)}%`}</p>
                                     {coin.price_change_percentage_24h < 0 ? (<FontAwesomeIcon icon={faArrowDownLong} className='ml-1 text-xs text-red-500' />) : (<FontAwesomeIcon icon={faArrowUpLong} className='ml-1 text-xs text-green-500' />)}
 
                                 </div>
                             </div>
-                            <p class="font-normal md:text-base text-sm text-gray-500 mt-2">Rp{new Intl.NumberFormat(['ban', 'id']).format(coin.current_price)}</p>
+                            <p className="font-normal md:text-base text-sm text-gray-500 mt-2">Rp{new Intl.NumberFormat(['ban', 'id']).format(coin.current_price)}</p>
                         </a>
                     )
                 })}
