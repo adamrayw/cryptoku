@@ -13,12 +13,12 @@ export default function SearchCoin() {
     const fetchCoin = async () => {
         if (keyword.length < 1) {
             setNotFound(true);
-            return;
         } else {
             setLoading(true)
             const response = await axios.get('https://api.coingecko.com/api/v3/search?query=' + keyword);
             setResult(response.data.coins)
             setLoading(false)
+            setNotFound(false)
         }
     }
 
@@ -53,7 +53,7 @@ export default function SearchCoin() {
                             </div>
                         )
                     })}
-                    {notFound && (<p className="flex justify-center items-center mt-12 text-gray-800">Coin not found</p>)}
+                    {(notFound || result.length === 0) && (<p className="flex justify-center items-center mt-12 text-gray-800">Coin not found</p>)}
                 </div>
             )}
         </div>
