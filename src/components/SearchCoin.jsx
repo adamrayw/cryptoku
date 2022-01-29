@@ -36,7 +36,7 @@ export default function SearchCoin() {
                     }} />
             </div>
             {open && (
-                <div className="fixed bg-black bg-opacity-10 flex flex-row justify-center items-center z-50 top-1/2 left-1/2 text-left transform -translate-x-1/2 -translate-y-1/2 w-full h-full" onClick={() => setOpen(false)}>
+                <div className="fixed bg-black bg-opacity-10 flex flex-row justify-center items-center z-10 top-1/2 left-1/2 text-left transform -translate-x-1/2 -translate-y-1/2 w-full h-full">
                     <div className="h-96 mx-2 overflow-y-auto bg-white md:w-4/12 w-full mt-2 md:p-10 p-6 shadow rounded-lg z-50 space-y-4">
                         <div className="relative">
                             <input type="text" className=" w-full text-sm focus:ring-2 transition-all focus:ring-gray-300 px-4 py-2 rounded-lg bg-white border" value={keyword} autoFocus placeholder="Search Coin..."
