@@ -43,6 +43,7 @@ export default function Navbar() {
                                                 }
                                                 : { borderBottom: '0px solid white', }
                                         }
+
                                     >
                                         Exchanges
                                     </NavLink>
@@ -126,6 +127,7 @@ export default function Navbar() {
                                             }
                                             : { borderBottom: '0px solid white', }
                                     }
+                                    onClick={() => setIsOpen(false)}
                                 >
                                     Coins
                                 </NavLink>
@@ -140,6 +142,7 @@ export default function Navbar() {
                                             }
                                             : { borderBottom: '0px solid white', }
                                     }
+                                    onClick={() => setIsOpen(false)}
                                 >
                                     Exchanges
                                 </NavLink>
