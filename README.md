@@ -1,6 +1,5 @@
 # Cryptoku
-
-Linku membantu anda untuk membuat beberapa link menjadi satu halaman, contoh anda memiliki link social media, link toko online, dsb, semua teratasi dengan Linku.
+Cryptoku provides a fundamental analysis of the crypto market. In addition to tracking price, volume and market capitalisation.
 
 ## Features
 
